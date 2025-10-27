@@ -52,7 +52,7 @@ export default function SubmittedPage() {
           >
             <EmojiEventsIcon
               sx={{
-                fontSize: '64px',
+                fontSize: { xs: '48px', sm: '56px', md: '64px' },
                 color: BRAND_CONFIG.colors.primary,
               }}
             />
@@ -74,7 +74,7 @@ export default function SubmittedPage() {
             variant="body1"
             sx={{
               color: BRAND_CONFIG.colors.textSecondary,
-              fontSize: '16px',
+              fontSize: { xs: '14px', sm: '16px' },
               lineHeight: 1.6,
               mb: 3,
             }}
@@ -86,7 +86,7 @@ export default function SubmittedPage() {
             variant="body1"
             sx={{
               color: BRAND_CONFIG.colors.textSecondary,
-              fontSize: '16px',
+              fontSize: { xs: '14px', sm: '16px' },
               lineHeight: 1.6,
               mb: 4,
             }}
@@ -108,22 +108,28 @@ export default function SubmittedPage() {
           <Box
             sx={{
               width: '100%',
+              maxWidth: '600px',
+              aspectRatio: '16/9',
               borderRadius: '12px',
               overflow: 'hidden',
               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
               mb: 2,
+              backgroundColor: '#000',
             }}
           >
             <video
               width="100%"
-              height="auto"
+              height="100%"
               autoPlay
               muted
               controls
+              controlsList="nodownload"
+              playsInline
               style={{
                 display: 'block',
-                maxWidth: '100%',
-                borderRadius: '12px',
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
               }}
             >
               <source
@@ -165,13 +171,19 @@ export default function SubmittedPage() {
               backgroundColor: '#1976d2',
               color: 'white',
               textTransform: 'none',
-              fontSize: '16px',
+              fontSize: { xs: '14px', sm: '16px' },
               fontWeight: 600,
-              py: 2.5,
-              px: 4,
+              py: { xs: 2, sm: 2.5 },
+              px: { xs: 3, sm: 4 },
               borderRadius: '8px',
-              maxWidth: '380px',
+              maxWidth: { xs: '100%', sm: '380px' },
               width: '100%',
+              minHeight: '48px',
+              transition: 'all 0.2s ease',
+              '&:active': {
+                backgroundColor: '#0d47a1',
+                transform: 'scale(0.98)',
+              },
               '&:hover': {
                 backgroundColor: '#1565c0',
               },
@@ -188,13 +200,19 @@ export default function SubmittedPage() {
               backgroundColor: '#1976d2',
               color: 'white',
               textTransform: 'none',
-              fontSize: '16px',
+              fontSize: { xs: '14px', sm: '16px' },
               fontWeight: 600,
-              py: 2.5,
-              px: 4,
+              py: { xs: 2, sm: 2.5 },
+              px: { xs: 3, sm: 4 },
               borderRadius: '8px',
-              maxWidth: '380px',
+              maxWidth: { xs: '100%', sm: '380px' },
               width: '100%',
+              minHeight: '48px',
+              transition: 'all 0.2s ease',
+              '&:active': {
+                backgroundColor: '#0d47a1',
+                transform: 'scale(0.98)',
+              },
               '&:hover': {
                 backgroundColor: '#1565c0',
               },
@@ -211,13 +229,19 @@ export default function SubmittedPage() {
               backgroundColor: '#1976d2',
               color: 'white',
               textTransform: 'none',
-              fontSize: '16px',
+              fontSize: { xs: '14px', sm: '16px' },
               fontWeight: 600,
-              py: 2.5,
-              px: 4,
+              py: { xs: 2, sm: 2.5 },
+              px: { xs: 3, sm: 4 },
               borderRadius: '8px',
-              maxWidth: '380px',
+              maxWidth: { xs: '100%', sm: '380px' },
               width: '100%',
+              minHeight: '48px',
+              transition: 'all 0.2s ease',
+              '&:active': {
+                backgroundColor: '#0d47a1',
+                transform: 'scale(0.98)',
+              },
               '&:hover': {
                 backgroundColor: '#1565c0',
               },
@@ -234,7 +258,7 @@ export default function SubmittedPage() {
             backgroundColor: '#f0f9ff',
             border: `2px solid ${BRAND_CONFIG.colors.primary}`,
             borderRadius: '12px',
-            p: 3,
+            p: { xs: 2, sm: 3 },
             mb: 4,
           }}
         >
@@ -244,6 +268,7 @@ export default function SubmittedPage() {
               fontWeight: 700,
               color: BRAND_CONFIG.colors.primary,
               mb: 2,
+              fontSize: { xs: '14px', sm: '16px' },
             }}
           >
             {BRAND_CONFIG.legal.privacyNotice}
@@ -254,7 +279,7 @@ export default function SubmittedPage() {
             sx={{
               color: BRAND_CONFIG.colors.textSecondary,
               lineHeight: 1.7,
-              fontSize: '14px',
+              fontSize: { xs: '12px', sm: '14px' },
             }}
           >
             {BRAND_CONFIG.legal.disclaimer}
@@ -274,7 +299,7 @@ export default function SubmittedPage() {
               display: 'flex',
               flexWrap: 'wrap',
               justifyContent: 'center',
-              gap: { xs: 2, md: 3 },
+              gap: { xs: 1.5, sm: 2.5 },
               mb: 3,
             }}
           >
@@ -292,14 +317,21 @@ export default function SubmittedPage() {
                 target={!link.isButton ? '_blank' : undefined}
                 rel={!link.isButton ? 'noopener noreferrer' : undefined}
                 sx={{
-                  fontSize: '14px',
+                  fontSize: { xs: '12px', sm: '14px' },
                   color: BRAND_CONFIG.colors.primary,
                   textDecoration: 'none',
                   cursor: 'pointer',
                   border: 'none',
                   background: 'none',
-                  padding: 0,
+                  padding: '6px 4px',
+                  minHeight: '44px',
+                  display: 'flex',
+                  alignItems: 'center',
                   fontFamily: 'inherit',
+                  transition: 'all 0.2s ease',
+                  '&:active': {
+                    opacity: 0.7,
+                  },
                   '&:hover': {
                     textDecoration: 'underline',
                     color: BRAND_CONFIG.colors.primaryDark,
@@ -335,39 +367,47 @@ export default function SubmittedPage() {
         PaperProps={{
           sx: {
             borderRadius: '12px',
-            maxHeight: '70vh',
+            maxHeight: { xs: '90vh', sm: '80vh' },
+            m: { xs: 1, sm: 2 },
+            maxWidth: { xs: '100%', sm: '900px' },
           },
         }}
       >
         <DialogTitle
           sx={{
-            fontSize: '24px',
+            fontSize: { xs: '18px', sm: '24px' },
             fontWeight: 700,
             color: BRAND_CONFIG.colors.textPrimary,
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             borderBottom: `1px solid ${BRAND_CONFIG.colors.border}`,
+            pr: 1,
           }}
         >
-          Privacy Policy for Arizona Home Loan Pros
+          Privacy Policy
           <IconButton
             onClick={() => setShowPrivacyPolicy(false)}
             size="small"
-            sx={{ color: BRAND_CONFIG.colors.textSecondary }}
+            sx={{
+              minWidth: '44px',
+              minHeight: '44px',
+              color: BRAND_CONFIG.colors.textSecondary
+            }}
           >
             <CloseIcon />
           </IconButton>
         </DialogTitle>
         <DialogContent
           sx={{
-            maxHeight: '70vh',
+            maxHeight: { xs: '65vh', sm: '70vh' },
             overflow: 'auto',
             pt: 3,
+            px: { xs: 2, sm: 3 },
             whiteSpace: 'pre-wrap',
             color: '#333333',
             lineHeight: 1.6,
-            fontSize: '15px',
+            fontSize: { xs: '14px', sm: '15px' },
           }}
         >
           {`PRIVACY POLICY FOR ARIZONA HOME LOAN PROS
@@ -469,9 +509,15 @@ Arizona Home Loan Pros is committed to protecting your personal information. Unl
               backgroundColor: BRAND_CONFIG.colors.primary,
               color: 'white',
               textTransform: 'none',
-              fontSize: '14px',
+              fontSize: { xs: '13px', sm: '14px' },
               fontWeight: 600,
-              px: 3,
+              px: { xs: 2.5, sm: 3 },
+              minHeight: '44px',
+              minWidth: '80px',
+              '&:active': {
+                backgroundColor: BRAND_CONFIG.colors.primaryDark,
+                transform: 'scale(0.98)',
+              },
               '&:hover': {
                 backgroundColor: BRAND_CONFIG.colors.primaryDark,
               },
@@ -491,39 +537,47 @@ Arizona Home Loan Pros is committed to protecting your personal information. Unl
         PaperProps={{
           sx: {
             borderRadius: '12px',
-            maxHeight: '70vh',
+            maxHeight: { xs: '90vh', sm: '80vh' },
+            m: { xs: 1, sm: 2 },
+            maxWidth: { xs: '100%', sm: '900px' },
           },
         }}
       >
         <DialogTitle
           sx={{
-            fontSize: '24px',
+            fontSize: { xs: '18px', sm: '24px' },
             fontWeight: 700,
             color: BRAND_CONFIG.colors.textPrimary,
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             borderBottom: `1px solid ${BRAND_CONFIG.colors.border}`,
+            pr: 1,
           }}
         >
-          Do Not Sell My Personal Information
+          Do Not Sell
           <IconButton
             onClick={() => setShowDoNotSell(false)}
             size="small"
-            sx={{ color: BRAND_CONFIG.colors.textSecondary }}
+            sx={{
+              minWidth: '44px',
+              minHeight: '44px',
+              color: BRAND_CONFIG.colors.textSecondary
+            }}
           >
             <CloseIcon />
           </IconButton>
         </DialogTitle>
         <DialogContent
           sx={{
-            maxHeight: '70vh',
+            maxHeight: { xs: '65vh', sm: '70vh' },
             overflow: 'auto',
             pt: 3,
+            px: { xs: 2, sm: 3 },
             whiteSpace: 'pre-wrap',
             color: '#333333',
             lineHeight: 1.6,
-            fontSize: '15px',
+            fontSize: { xs: '14px', sm: '15px' },
           }}
         >
           {`DO NOT SELL MY PERSONAL INFORMATION
@@ -599,9 +653,15 @@ Your privacy is important to us. Arizona Home Loan Pros remains committed to tra
               backgroundColor: BRAND_CONFIG.colors.primary,
               color: 'white',
               textTransform: 'none',
-              fontSize: '14px',
+              fontSize: { xs: '13px', sm: '14px' },
               fontWeight: 600,
-              px: 3,
+              px: { xs: 2.5, sm: 3 },
+              minHeight: '44px',
+              minWidth: '80px',
+              '&:active': {
+                backgroundColor: BRAND_CONFIG.colors.primaryDark,
+                transform: 'scale(0.98)',
+              },
               '&:hover': {
                 backgroundColor: BRAND_CONFIG.colors.primaryDark,
               },
@@ -621,39 +681,47 @@ Your privacy is important to us. Arizona Home Loan Pros remains committed to tra
         PaperProps={{
           sx: {
             borderRadius: '12px',
-            maxHeight: '70vh',
+            maxHeight: { xs: '90vh', sm: '80vh' },
+            m: { xs: 1, sm: 2 },
+            maxWidth: { xs: '100%', sm: '900px' },
           },
         }}
       >
         <DialogTitle
           sx={{
-            fontSize: '24px',
+            fontSize: { xs: '18px', sm: '24px' },
             fontWeight: 700,
             color: BRAND_CONFIG.colors.textPrimary,
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             borderBottom: `1px solid ${BRAND_CONFIG.colors.border}`,
+            pr: 1,
           }}
         >
           Accessibility Statement
           <IconButton
             onClick={() => setShowAccessibility(false)}
             size="small"
-            sx={{ color: BRAND_CONFIG.colors.textSecondary }}
+            sx={{
+              minWidth: '44px',
+              minHeight: '44px',
+              color: BRAND_CONFIG.colors.textSecondary
+            }}
           >
             <CloseIcon />
           </IconButton>
         </DialogTitle>
         <DialogContent
           sx={{
-            maxHeight: '70vh',
+            maxHeight: { xs: '65vh', sm: '70vh' },
             overflow: 'auto',
             pt: 3,
+            px: { xs: 2, sm: 3 },
             whiteSpace: 'pre-wrap',
             color: '#333333',
             lineHeight: 1.6,
-            fontSize: '15px',
+            fontSize: { xs: '14px', sm: '15px' },
           }}
         >
           {`ACCESSIBILITY STATEMENT FOR ARIZONA HOME LOAN PROS
@@ -715,9 +783,15 @@ Arizona Home Loan Pros remains committed to providing an accessible and inclusiv
               backgroundColor: BRAND_CONFIG.colors.primary,
               color: 'white',
               textTransform: 'none',
-              fontSize: '14px',
+              fontSize: { xs: '13px', sm: '14px' },
               fontWeight: 600,
-              px: 3,
+              px: { xs: 2.5, sm: 3 },
+              minHeight: '44px',
+              minWidth: '80px',
+              '&:active': {
+                backgroundColor: BRAND_CONFIG.colors.primaryDark,
+                transform: 'scale(0.98)',
+              },
               '&:hover': {
                 backgroundColor: BRAND_CONFIG.colors.primaryDark,
               },

@@ -991,15 +991,22 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
           onClick={onBack}
           sx={{
             color: FORM_COLORS.primary,
-            minWidth: 'auto',
-            p: 0.5,
+            minWidth: '48px',
+            minHeight: '48px',
+            p: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: '50%',
+            '&:active': {
+              backgroundColor: 'rgba(0, 170, 255, 0.1)',
+            },
             '&:hover': {
-              backgroundColor: 'transparent',
-              opacity: 0.7,
+              backgroundColor: 'rgba(0, 170, 255, 0.08)',
             },
           }}
         >
-          <ArrowBackIcon sx={{ fontSize: 28 }} />
+          <ArrowBackIcon sx={{ fontSize: { xs: 20, sm: 24, md: 28 } }} />
         </Button>
         <Typography
           sx={{
@@ -1029,7 +1036,7 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            height: 'calc(100vh - 200px)',
+            height: { xs: 'calc(100vh - 180px)', sm: 'calc(100vh - 200px)' },
             borderRadius: '12px',
             overflow: 'hidden',
             backgroundColor: 'white',
@@ -1040,7 +1047,7 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
             sx={{
               flex: 1,
               overflowY: 'auto',
-              p: 3,
+              p: { xs: 2, sm: 3 },
               display: 'flex',
               flexDirection: 'column',
               gap: 2,
@@ -1060,8 +1067,10 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
                 {message.type === 'bot' && (
                   <Box
                     sx={{
-                      width: 32,
-                      height: 32,
+                      width: { xs: '36px', sm: '32px' },
+                      height: { xs: '36px', sm: '32px' },
+                      minWidth: { xs: '36px', sm: '32px' },
+                      minHeight: { xs: '36px', sm: '32px' },
                       borderRadius: '50%',
                       backgroundColor: FORM_COLORS.primary,
                       display: 'flex',
@@ -1070,7 +1079,7 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
                       color: 'white',
                       fontWeight: 'bold',
                       flexShrink: 0,
-                      fontSize: '1.2rem',
+                      fontSize: { xs: '1.1rem', sm: '1.2rem' },
                     }}
                   >
                     🤖
@@ -1079,7 +1088,7 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
 
                 <Box
                   sx={{
-                    maxWidth: '70%',
+                    maxWidth: { xs: '85%', sm: '70%' },
                     display: 'flex',
                     flexDirection: 'column',
                     gap: 1,
@@ -1105,8 +1114,10 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
                 {message.type === 'user' && (
                   <Box
                     sx={{
-                      width: 32,
-                      height: 32,
+                      width: { xs: '36px', sm: '32px' },
+                      height: { xs: '36px', sm: '32px' },
+                      minWidth: { xs: '36px', sm: '32px' },
+                      minHeight: { xs: '36px', sm: '32px' },
                       borderRadius: '50%',
                       backgroundColor: FORM_COLORS.checked,
                       display: 'flex',
@@ -1115,7 +1126,7 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
                       color: 'white',
                       fontWeight: 'bold',
                       flexShrink: 0,
-                      fontSize: '1.2rem',
+                      fontSize: { xs: '1.1rem', sm: '1.2rem' },
                     }}
                   >
                     👤
@@ -1136,8 +1147,10 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
               >
                 <Box
                   sx={{
-                    width: 32,
-                    height: 32,
+                    width: { xs: '36px', sm: '32px' },
+                    height: { xs: '36px', sm: '32px' },
+                    minWidth: { xs: '36px', sm: '32px' },
+                    minHeight: { xs: '36px', sm: '32px' },
                     borderRadius: '50%',
                     backgroundColor: FORM_COLORS.primary,
                     display: 'flex',
@@ -1146,14 +1159,14 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
                     color: 'white',
                     fontWeight: 'bold',
                     flexShrink: 0,
-                    fontSize: '1.2rem',
+                    fontSize: { xs: '1.1rem', sm: '1.2rem' },
                   }}
                 >
                   🤖
                 </Box>
                 <Box
                   sx={{
-                    maxWidth: '70%',
+                    maxWidth: { xs: '85%', sm: '70%' },
                     p: 2,
                     borderRadius: '12px',
                     backgroundColor: FORM_COLORS.botMessage,
@@ -1203,14 +1216,17 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
 
           {/* Input area */}
           {!isFormComplete && !isTyping && !isTransitioning && (
-            <Box sx={{ p: 3, backgroundColor: 'white', borderTop: `1px solid ${FORM_COLORS.border}` }}>
+            <Box sx={{ p: { xs: 2, sm: 3 }, backgroundColor: 'white', borderTop: `1px solid ${FORM_COLORS.border}`, maxHeight: '40vh', overflowY: 'auto' }}>
               {currentStep.options && !isLastStep ? (
                 // Options display
                 <Box
                   sx={{
                     display: 'grid',
-                    gridTemplateColumns: currentStep.options.length > 4 ? '1fr 1fr' : '1fr',
-                    gap: 2,
+                    gridTemplateColumns: {
+                      xs: currentStep.options.length > 3 ? '1fr 1fr' : '1fr',
+                      sm: currentStep.options.length > 4 ? '1fr 1fr' : '1fr'
+                    },
+                    gap: { xs: 1.5, sm: 2 },
                   }}
                 >
                   {currentStep.options.map((option) => (
@@ -1218,16 +1234,28 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
                       key={option.value}
                       onClick={() => handleOptionSelect(option.value)}
                       sx={{
-                        p: '15px 20px',
+                        p: { xs: '12px 16px', sm: '15px 20px' },
+                        minHeight: { xs: '48px', sm: '44px' },
                         border: `2px solid ${FORM_COLORS.border}`,
                         backgroundColor: FORM_COLORS.background,
                         color: FORM_COLORS.text,
                         borderRadius: '12px',
                         textAlign: 'center',
-                        fontSize: '0.95rem',
+                        fontSize: { xs: '0.875rem', sm: '0.95rem' },
                         fontWeight: 500,
                         textTransform: 'none',
-                        transition: 'all 0.3s ease',
+                        whiteSpace: 'normal',
+                        wordWrap: 'break-word',
+                        transition: 'all 0.2s ease',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        '&:active': {
+                          backgroundColor: 'white',
+                          color: FORM_COLORS.primary,
+                          borderColor: FORM_COLORS.primary,
+                          transform: 'scale(0.98)',
+                        },
                         '&:hover': {
                           backgroundColor: 'white',
                           color: FORM_COLORS.primary,
@@ -1241,7 +1269,7 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
                 </Box>
               ) : currentStep.isTextInput ? (
                 // Text input display
-                <Box sx={{ display: 'flex', gap: 2 }}>
+                <Box sx={{ display: 'flex', gap: { xs: 1, sm: 2 }, flexDirection: { xs: 'column', sm: 'row' } }}>
                   <TextField
                     fullWidth
                     value={textInput}
@@ -1253,6 +1281,7 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
                     }
                     sx={{
                       '& .MuiOutlinedInput-root': {
+                        minHeight: '48px',
                         borderRadius: '12px',
                         backgroundColor: FORM_COLORS.background,
                         '& fieldset': {
@@ -1268,8 +1297,8 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
                       },
                       '& .MuiOutlinedInput-input': {
                         color: FORM_COLORS.text,
-                        fontSize: '1rem',
-                        padding: '15px 20px',
+                        fontSize: { xs: '0.95rem', sm: '1rem' },
+                        padding: { xs: '12px 16px', sm: '15px 20px' },
                         '&::placeholder': {
                           color: FORM_COLORS.placeholder,
                           opacity: 1,
@@ -1281,13 +1310,21 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
                     onClick={handleTextSubmit}
                     disabled={!textInput.trim()}
                     sx={{
-                      p: '15px 30px',
+                      p: { xs: '12px 20px', sm: '15px 30px' },
+                      minHeight: { xs: '48px', sm: 'auto' },
+                      minWidth: { xs: '100%', sm: '120px' },
                       backgroundColor: FORM_COLORS.primary,
                       color: 'white',
                       borderRadius: '12px',
                       fontWeight: 700,
                       textTransform: 'none',
-                      minWidth: '120px',
+                      whiteSpace: 'nowrap',
+                      fontSize: { xs: '0.95rem', sm: '1rem' },
+                      transition: 'all 0.2s ease',
+                      '&:active': {
+                        backgroundColor: FORM_COLORS.primaryDark,
+                        transform: 'scale(0.98)',
+                      },
                       '&:hover': {
                         backgroundColor: FORM_COLORS.primaryDark,
                       },
@@ -1303,22 +1340,34 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
                 </Box>
               ) : (
                 // Options for confirmation (yes/no)
-                <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
+                <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: { xs: 1.5, sm: 2 } }}>
                   {currentStep.options?.map((option) => (
                     <Button
                       key={option.value}
                       onClick={() => handleOptionSelect(option.value)}
                       sx={{
-                        p: '15px 20px',
+                        p: { xs: '12px 16px', sm: '15px 20px' },
+                        minHeight: { xs: '48px', sm: '44px' },
                         border: `2px solid ${FORM_COLORS.border}`,
                         backgroundColor: FORM_COLORS.background,
                         color: FORM_COLORS.text,
                         borderRadius: '12px',
                         textAlign: 'center',
-                        fontSize: '0.95rem',
+                        fontSize: { xs: '0.875rem', sm: '0.95rem' },
                         fontWeight: 500,
                         textTransform: 'none',
-                        transition: 'all 0.3s ease',
+                        whiteSpace: 'normal',
+                        wordWrap: 'break-word',
+                        transition: 'all 0.2s ease',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        '&:active': {
+                          backgroundColor: 'white',
+                          color: FORM_COLORS.primary,
+                          borderColor: FORM_COLORS.primary,
+                          transform: 'scale(0.98)',
+                        },
                         '&:hover': {
                           backgroundColor: 'white',
                           color: FORM_COLORS.primary,
