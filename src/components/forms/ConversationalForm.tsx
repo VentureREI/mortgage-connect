@@ -1297,7 +1297,7 @@ export function ConversationalForm({ formType, onBack }: ConversationalFormProps
                       },
                       '& .MuiOutlinedInput-input': {
                         color: FORM_COLORS.text,
-                        fontSize: { xs: '0.95rem', sm: '1rem' },
+                        fontSize: '16px',
                         padding: { xs: '12px 16px', sm: '15px 20px' },
                         '&::placeholder': {
                           color: FORM_COLORS.placeholder,

@@ -300,8 +300,12 @@ export function FormSelector({ formType, onBack }: FormSelectorProps) {
               mb: 3,
               color: FORM_COLORS.primary,
               textTransform: 'none',
-              fontSize: '1rem',
+              fontSize: { xs: '0.875rem', sm: '1rem' },
               fontWeight: 500,
+              minHeight: '44px',
+              '&:active': {
+                backgroundColor: 'rgba(0, 170, 255, 0.1)',
+              },
               '&:hover': {
                 backgroundColor: 'rgba(0, 170, 255, 0.04)',
               },
@@ -321,8 +325,9 @@ export function FormSelector({ formType, onBack }: FormSelectorProps) {
                     fontWeight: 700,
                     mb: 4,
                     color: 'text.primary',
-                    fontSize: { xs: '1.75rem', sm: '2.25rem', md: '2.5rem' },
+                    fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' },
                     textAlign: 'center',
+                    lineHeight: 1.3,
                   }}
                 >
                   {currentQuestion.title}
@@ -334,10 +339,16 @@ export function FormSelector({ formType, onBack }: FormSelectorProps) {
                     <Box
                       sx={{
                         display: 'grid',
-                        gridTemplateColumns: currentQuestion.options.length > 4 ? '1fr 1fr' : '1fr',
-                        gap: 2,
+                        gridTemplateColumns: {
+                          xs: currentQuestion.options.length > 3 ? '1fr 1fr' : '1fr',
+                          sm: currentQuestion.options.length > 4 ? '1fr 1fr' : '1fr'
+                        },
+                        gap: { xs: 1.5, sm: 2 },
                         alignItems: 'start',
                         justifyItems: 'center',
+                        width: '100%',
+                        maxWidth: { xs: '100%', sm: '100%' },
+                        px: { xs: 0, sm: 0 },
                       }}
                     >
                       {/* Render options for regular questions */}
@@ -350,16 +361,21 @@ export function FormSelector({ formType, onBack }: FormSelectorProps) {
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            minWidth: '320px',
-                            height: '70px',
+                            minWidth: { xs: '100%', sm: '320px' },
+                            minHeight: { xs: '48px', sm: '70px' },
+                            width: '100%',
                             border: `2px solid ${FORM_COLORS.checked}`,
                             backgroundColor: FORM_COLORS.checked,
                             borderRadius: '8px',
-                            padding: '18px 24px',
+                            padding: { xs: '12px 16px', sm: '18px 24px' },
                             transition: 'all 0.2s ease',
                             cursor: 'pointer',
                             textAlign: 'center',
                             gridColumn: isLastOdd ? '1 / -1' : 'auto',
+                            '&:active': {
+                              backgroundColor: FORM_COLORS.primary,
+                              transform: 'scale(0.98)',
+                            },
                             '&:hover': {
                               backgroundColor: FORM_COLORS.primary,
                               boxShadow: `0 4px 12px rgba(0, 170, 255, 0.3)`,
@@ -374,11 +390,13 @@ export function FormSelector({ formType, onBack }: FormSelectorProps) {
                         >
                           <Box
                             sx={{
-                              fontSize: '18px',
+                              fontSize: { xs: '14px', sm: '18px' },
                               fontWeight: 600,
                               color: '#fff',
                               cursor: 'pointer',
-                              whiteSpace: 'nowrap',
+                              whiteSpace: 'normal',
+                              wordWrap: 'break-word',
+                              lineHeight: 1.3,
                             }}
                           >
                             {option.label}
@@ -399,13 +417,14 @@ export function FormSelector({ formType, onBack }: FormSelectorProps) {
                             }
                           }}
                           style={{
-                            width: '320px',
-                            height: '70px',
-                            padding: '18px 24px',
+                            width: '100%',
+                            maxWidth: '400px',
+                            minHeight: '48px',
+                            padding: '12px 16px',
                             border: `2px solid ${FORM_COLORS.border}`,
                             backgroundColor: FORM_COLORS.background,
                             borderRadius: '8px',
-                            fontSize: '18px',
+                            fontSize: '16px',
                             fontWeight: 600,
                             fontFamily: 'inherit',
                             textAlign: 'center',
@@ -448,9 +467,10 @@ export function FormSelector({ formType, onBack }: FormSelectorProps) {
                             type="text"
                             placeholder="First Name"
                             style={{
-                              width: '320px',
-                              height: '70px',
-                              padding: '18px 24px',
+                              width: '100%',
+                              maxWidth: '400px',
+                              minHeight: '48px',
+                              padding: '12px 16px',
                               border: `2px solid ${FORM_COLORS.border}`,
                               backgroundColor: FORM_COLORS.background,
                               borderRadius: '12px',
@@ -485,9 +505,10 @@ export function FormSelector({ formType, onBack }: FormSelectorProps) {
                             type="text"
                             placeholder="Last Name"
                             style={{
-                              width: '320px',
-                              height: '70px',
-                              padding: '18px 24px',
+                              width: '100%',
+                              maxWidth: '400px',
+                              minHeight: '48px',
+                              padding: '12px 16px',
                               border: `2px solid ${FORM_COLORS.border}`,
                               backgroundColor: FORM_COLORS.background,
                               borderRadius: '12px',
@@ -527,9 +548,10 @@ export function FormSelector({ formType, onBack }: FormSelectorProps) {
                             type="email"
                             placeholder="Email Address"
                             style={{
-                              width: '320px',
-                              height: '70px',
-                              padding: '18px 24px',
+                              width: '100%',
+                              maxWidth: '400px',
+                              minHeight: '48px',
+                              padding: '12px 16px',
                               border: `2px solid ${FORM_COLORS.border}`,
                               backgroundColor: FORM_COLORS.background,
                               borderRadius: '12px',
@@ -569,9 +591,10 @@ export function FormSelector({ formType, onBack }: FormSelectorProps) {
                             type="tel"
                             placeholder="Phone Number"
                             style={{
-                              width: '320px',
-                              height: '70px',
-                              padding: '18px 24px',
+                              width: '100%',
+                              maxWidth: '400px',
+                              minHeight: '48px',
+                              padding: '12px 16px',
                               border: `2px solid ${FORM_COLORS.border}`,
                               backgroundColor: FORM_COLORS.background,
                               borderRadius: '12px',
@@ -602,7 +625,7 @@ export function FormSelector({ formType, onBack }: FormSelectorProps) {
             )}
 
             {/* Navigation */}
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 6, pt: 3, position: 'relative' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 6, pt: 3, position: 'relative', gap: 2 }}>
               {/* Back Arrow */}
               {activeStep > 0 && (
                 <Button
@@ -612,14 +635,18 @@ export function FormSelector({ formType, onBack }: FormSelectorProps) {
                   sx={{
                     backgroundColor: 'transparent',
                     color: FORM_COLORS.primary,
-                    padding: '8px 12px',
-                    minWidth: 'auto',
+                    padding: { xs: '6px 8px', sm: '8px 12px' },
+                    minWidth: { xs: '44px', sm: 'auto' },
+                    minHeight: '44px',
+                    '&:active': {
+                      backgroundColor: 'rgba(0, 170, 255, 0.1)',
+                    },
                     '&:hover': {
                       backgroundColor: 'transparent',
                       opacity: 0.8,
                     },
                     '& .MuiSvgIcon-root': {
-                      fontSize: '28px',
+                      fontSize: { xs: '20px', sm: '28px' },
                     },
                   }}
                 />
@@ -638,16 +665,19 @@ export function FormSelector({ formType, onBack }: FormSelectorProps) {
                   sx={{
                     backgroundColor: FORM_COLORS.primary,
                     color: 'white',
-                    fontSize: '16px',
+                    fontSize: { xs: '14px', sm: '16px' },
                     fontWeight: 'bold',
-                    padding: '15px 30px',
+                    padding: { xs: '12px 24px', sm: '15px 30px' },
                     borderRadius: '12px',
                     textTransform: 'none',
-                    width: '90%',
-                    maxWidth: '150px',
+                    minHeight: '48px',
+                    minWidth: '100px',
                     marginLeft: 'auto',
                     marginRight: 'auto',
-                    display: 'block',
+                    '&:active': {
+                      backgroundColor: FORM_COLORS.primaryDark,
+                      transform: 'scale(0.98)',
+                    },
                     '&:hover': {
                       backgroundColor: FORM_COLORS.primaryDark,
                     },
@@ -666,14 +696,18 @@ export function FormSelector({ formType, onBack }: FormSelectorProps) {
                   sx={{
                     backgroundColor: 'transparent',
                     color: FORM_COLORS.primary,
-                    padding: '8px 12px',
-                    minWidth: 'auto',
+                    padding: { xs: '6px 8px', sm: '8px 12px' },
+                    minWidth: { xs: '44px', sm: 'auto' },
+                    minHeight: '44px',
+                    '&:active': {
+                      backgroundColor: 'rgba(0, 170, 255, 0.1)',
+                    },
                     '&:hover': {
                       backgroundColor: 'transparent',
                       opacity: 0.8,
                     },
                     '& .MuiSvgIcon-root': {
-                      fontSize: '28px',
+                      fontSize: { xs: '20px', sm: '28px' },
                     },
                   }}
                 />
